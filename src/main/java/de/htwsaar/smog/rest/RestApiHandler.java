@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,11 +43,15 @@ public class RestApiHandler extends AbstractRestHandler {
 	@Autowired
 	private MongoTemplate			mongoTemplate;
 	
+	@RequestMapping(value = "{hostname}", method = RequestMethod.GET)
+	public @ResponseBody List<Measurement> findHostname(@PathVariable("hostname") String hostname) {
+		return this.measurementRepository.findByHostname(hostname);
+	}
+	
 	@RequestMapping("all")
 	public @ResponseBody List<Measurement> findAll() {
-		List<Measurement> results = measurementRepository.findAll();
-		return results;
-	}
+		return this.measurementRepository.findAll();
+	}	
 	
 	@ExceptionHandler
 	@ResponseStatus(HttpStatus.NOT_FOUND)

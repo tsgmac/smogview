@@ -29,11 +29,25 @@ public class MongoDBMeasurementService implements MeasurementService {
 	 */
 	@Override
 	public Measurement findById(String id) {
-		// TODO Auto-generated method stub
-		Measurement measurement = this.findMeasurementById(id);
+		Measurement measurement = this.findMeasurementByValue(id);
 		return measurement;
 	}
 
+	/* (non-Javadoc)
+	 * @see de.htwsaar.smog.dao.MeasurementService#findHostname()
+	 */
+	@Override
+	public List<Measurement> findByHostname(String hostname) {
+		
+		List<Measurement> measurements = repo.findByHostname(hostname);
+		
+		if (measurements.isEmpty()) {
+			throw new MeasurementNotFoundException();
+		}
+		
+		return measurements;
+	}
+	
 	/* (non-Javadoc)
 	 * @see de.htwsaar.smog.dao.MeasurementService#findAll()
 	 */
@@ -50,9 +64,9 @@ public class MongoDBMeasurementService implements MeasurementService {
 	}
 	
 	// provides exception handling in functional Java 1.8 style
-	private Measurement findMeasurementById(String id) {
-		Optional<Measurement> result = repo.findOne(id);
-		return result.orElseThrow(() -> new MeasurementNotFoundException(id));
+	private Measurement findMeasurementByValue(String value) {
+		Optional<Measurement> result = repo.findOne(value);
+		return result.orElseThrow(() -> new MeasurementNotFoundException(value));
 	}
-
+	
 }

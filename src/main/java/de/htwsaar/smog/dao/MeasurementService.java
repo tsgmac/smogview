@@ -17,15 +17,23 @@ public interface MeasurementService {
 	/**
 	 * Finds a measurement by its id.
 	 * 
-	 * @param id	id of the searched measurement 
-	 * @return		the searched measurement
+	 * @param id		id of the searched measurement 
+	 * @return			the searched measurement
 	 */
-	Measurement findById(String id);	
+	Measurement findById(String id);
+	
+	/**
+	 * Finds all measurements of a certain host identified by its hostname.
+	 * 
+	 * @param hostname	searched hostname
+	 * @return			the searched hostname
+	 */
+	List<Measurement> findByHostname(String hostname);
 	
 	/**
 	 * Provides all measurements inside the database.
 	 * 
-	 * @return		all measurements inside the database
+	 * @return			all measurements inside the database
 	 */
 	List<Measurement> findAll();	
 

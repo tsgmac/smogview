@@ -9,11 +9,12 @@ import org.springframework.data.repository.query.Param;
 import de.htwsaar.smog.model.Measurement;
 
 /**
- * @author	Thomas Schoenfeld
- * @date	2015-01-24
- * @version	20150124_01
+ * @author Thomas Schoenfeld
+ * @date 2015-01-24
+ * @version 20150124_01
  * 
- * Interface MeasurementRepository for Entity Manager class MongoDBMeasurementService
+ *          Interface MeasurementRepository for Entity Manager class
+ *          MongoDBMeasurementService
  *
  */
 public interface MeasurementRepository extends Repository<Measurement, String> {
@@ -21,18 +22,28 @@ public interface MeasurementRepository extends Repository<Measurement, String> {
 	/**
 	 * Finds a measurement by its id.
 	 * 
-	 * @param id	id of the searched measurement 
-	 * @return		the searched measurement
+	 * @param id
+	 *            id of the searched measurement
+	 * @return the searched measurement
 	 */
-	Measurement findById(@Param("id") String id);	
-	
+	Measurement findById(@Param("id") String id);
+
+	/**
+	 * Finds all measurements of a certain host identified by its hostname.
+	 * 
+	 * @param hostname
+	 *            searched hostname
+	 * @return the searched hostname
+	 */
+	List<Measurement> findByHostname(@Param("hostname") String hostname);
+
 	/**
 	 * Provides all measurements inside the database.
 	 * 
-	 * @return		all measurements inside the database
+	 * @return all measurements inside the database
 	 */
 	List<Measurement> findAll();
-	
-	Optional<Measurement> findOne(String id);
-	
+
+	Optional<Measurement> findOne(String value);
+
 }
