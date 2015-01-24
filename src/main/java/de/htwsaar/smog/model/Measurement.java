@@ -4,7 +4,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * 
  * @author	Thomas Schoenfeld
  * @date	2015-01-24
  * @version	20150124_01
