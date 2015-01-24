@@ -8,6 +8,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 
+/**
+* @author	Thomas Schoenfeld
+* @date	2015-01-24
+* @version	20150124_01
+* 
+* Abstract class AbstractRestHandler provides exception handling and logging.
+*/
 public abstract class AbstractRestHandler {
 
 	protected Logger log = LoggerFactory.getLogger(this.getClass());

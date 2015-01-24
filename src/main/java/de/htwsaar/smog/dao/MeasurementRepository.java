@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.query.Param;
 
 import de.htwsaar.smog.model.Measurement;
 
@@ -23,7 +24,7 @@ public interface MeasurementRepository extends Repository<Measurement, String> {
 	 * @param id	id of the searched measurement 
 	 * @return		the searched measurement
 	 */
-	Measurement findById(String id);	
+	Measurement findById(@Param("id") String id);	
 	
 	/**
 	 * Provides all measurements inside the database.

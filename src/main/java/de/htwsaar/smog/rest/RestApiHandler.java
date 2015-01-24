@@ -27,6 +27,7 @@ import de.htwsaar.smog.model.Measurement;
  * Class RestApiHandler implements the REST API. 
  */
 @RestController
+@RequestMapping("/measurements")
 public class RestApiHandler extends AbstractRestHandler {
 
 	//Dependency Injection:

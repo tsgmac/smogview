@@ -1,5 +1,12 @@
 package de.htwsaar.smog.rest;
 
+/**
+* @author	Thomas Schoenfeld
+* @date	2015-01-24
+* @version	20150124_01
+* 
+* Class RestResponse returns REST status information.
+*/
 public class RestResponse {
 
 	private String message;

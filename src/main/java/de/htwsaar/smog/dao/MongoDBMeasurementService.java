@@ -39,10 +39,17 @@ public class MongoDBMeasurementService implements MeasurementService {
 	 */
 	@Override
 	public List<Measurement> findAll() {
+		
 		List<Measurement> measurements = repo.findAll();
+		
+		if (measurements.isEmpty()) {
+			throw new MeasurementNotFoundException();
+		}
+		
 		return measurements;
 	}
 	
+	// provides exception handling in functional Java 1.8 style
 	private Measurement findMeasurementById(String id) {
 		Optional<Measurement> result = repo.findOne(id);
 		return result.orElseThrow(() -> new MeasurementNotFoundException(id));
