@@ -29,12 +29,86 @@ public class MongoDBMeasurementService implements MeasurementService {
 	 */
 	@Override
 	public Measurement findById(String id) {
-		Measurement measurement = this.findMeasurementByValue(id);
-		return measurement;
+		return this.findMeasurementByValue(id);		
 	}
 
 	/* (non-Javadoc)
-	 * @see de.htwsaar.smog.dao.MeasurementService#findHostname()
+	 * @see de.htwsaar.smog.dao.MeasurementService#findByDateUtc(java.lang.String)
+	 */
+	@Override
+	public List<Measurement> findByDateUtc(String dateUtc) {
+		
+		List<Measurement> measurements = repo.findByDateUtc(dateUtc);
+		
+		if (measurements.isEmpty()) {
+			throw new MeasurementNotFoundException();
+		}
+		
+		return measurements;
+	}
+
+	/* (non-Javadoc)
+	 * @see de.htwsaar.smog.dao.MeasurementService#findByDateLocal(java.lang.String)
+	 */
+	@Override
+	public List<Measurement> findByDateLocal(String dateLocal) {
+		
+		List<Measurement> measurements = repo.findByDateLocal(dateLocal);
+		
+		if (measurements.isEmpty()) {
+			throw new MeasurementNotFoundException();
+		}
+		
+		return measurements;
+	}
+
+	/* (non-Javadoc)
+	 * @see de.htwsaar.smog.dao.MeasurementService#findByTimeUtc(java.lang.String)
+	 */
+	@Override
+	public List<Measurement> findByTimeUtc(String timeUtc) {
+		
+		List<Measurement> measurements = repo.findByTimeUtc(timeUtc);
+		
+		if (measurements.isEmpty()) {
+			throw new MeasurementNotFoundException();
+		}
+		
+		return measurements;
+	}
+
+	/* (non-Javadoc)
+	 * @see de.htwsaar.smog.dao.MeasurementService#findByTimeLocal(java.lang.String)
+	 */
+	@Override
+	public List<Measurement> findByTimeLocal(String timeLocal) {
+		
+		List<Measurement> measurements = repo.findByTimeLocal(timeLocal);
+		
+		if (measurements.isEmpty()) {
+			throw new MeasurementNotFoundException();
+		}
+		
+		return measurements;
+	}
+	
+	/* (non-Javadoc)
+	 * @see de.htwsaar.smog.dao.MeasurementService#findByLocation(java.lang.String)
+	 */
+	@Override
+	public List<Measurement> findByLocation(String location) {
+		
+		List<Measurement> measurements = repo.findByLocation(location);
+		
+		if (measurements.isEmpty()) {
+			throw new MeasurementNotFoundException();
+		}
+		
+		return measurements;
+	}	
+	
+	/* (non-Javadoc)
+	 * @see de.htwsaar.smog.dao.MeasurementService#findHostname(java.lang.String)
 	 */
 	@Override
 	public List<Measurement> findByHostname(String hostname) {

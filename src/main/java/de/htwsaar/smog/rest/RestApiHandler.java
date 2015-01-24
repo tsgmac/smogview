@@ -43,7 +43,32 @@ public class RestApiHandler extends AbstractRestHandler {
 	@Autowired
 	private MongoTemplate			mongoTemplate;
 	
-	@RequestMapping(value = "{hostname}", method = RequestMethod.GET)
+	@RequestMapping(value = "utcdate/{dateUtc}", method = RequestMethod.GET)
+	public @ResponseBody List<Measurement> findByDateUtc(@PathVariable("dateUtc") String dateUtc) {
+		return this.measurementRepository.findByDateUtc(dateUtc);
+	}	
+	
+	@RequestMapping(value = "localdate/{dateLocal}", method = RequestMethod.GET)
+	public @ResponseBody List<Measurement> findByDateLocal(@PathVariable("dateLocal") String dateLocal) {
+		return this.measurementRepository.findByDateLocal(dateLocal);
+	}	
+
+	@RequestMapping(value = "utctime/{timeUtc}", method = RequestMethod.GET)
+	public @ResponseBody List<Measurement> findByTimeUtc(@PathVariable("timeUtc") String timeUtc) {
+		return this.measurementRepository.findByTimeUtc(timeUtc);
+	}
+	
+	@RequestMapping(value = "localtime/{timeLocal}", method = RequestMethod.GET)
+	public @ResponseBody List<Measurement> findByTimeLocal(@PathVariable("timeLocal") String timeLocal) {
+		return this.measurementRepository.findByTimeLocal(timeLocal);
+	}
+
+	@RequestMapping(value = "location/{location}", method = RequestMethod.GET)
+	public @ResponseBody List<Measurement> findByLocation(@PathVariable("location") String location) {
+		return this.measurementRepository.findByLocation(location);
+	}	
+	
+	@RequestMapping(value = "hostname/{hostname}", method = RequestMethod.GET)
 	public @ResponseBody List<Measurement> findHostname(@PathVariable("hostname") String hostname) {
 		return this.measurementRepository.findByHostname(hostname);
 	}
