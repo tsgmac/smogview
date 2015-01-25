@@ -17,7 +17,7 @@ apply plugin: 'spring-boot'
 
 jar {
     baseName = 'smogview'
-    version = '0.0.1-SNAPSHOT'
+    version = 'TS-20150125_01'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
